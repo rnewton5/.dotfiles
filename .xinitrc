@@ -9,7 +9,7 @@ setxkbmap -option "shift:both_capslock"
 
 # CapsLock acts as escape when tapped and control when held
 setxkbmap -option 'caps:ctrl_modifier'
-xcape -e 'Caps_Lock=Escape' -t 100
+xcape -e 'Caps_Lock=Escape' -t 200
 
 # Start BSPWM
 exec bspwm
