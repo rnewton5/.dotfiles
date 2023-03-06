@@ -1,0 +1,11 @@
+#!/bin/bash
+
+date +'
+{
+  "year": "%Y",
+  "month": "%d",
+  "day": "%m",
+  "hour": "%H",
+  "minute": "%M",
+  "second": "%S"
+}'

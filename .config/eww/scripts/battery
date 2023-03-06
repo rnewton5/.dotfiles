@@ -1,0 +1,26 @@
+#!/bin/bash
+
+battery() {
+	cat /sys/class/power_supply/BAT1/capacity
+}
+
+battery_stat() {
+  percent=$1
+  if (( percent <= 20 )); then
+    echo "low"
+  else
+    cat /sys/class/power_supply/BAT1/status
+  fi
+}
+
+bat=$(battery)
+stat=$(battery_stat $bat)
+
+echo "{\"perc\":\"$bat\",\"stat\":\"$stat\"}"
+
+# if [[ "$1" == "--bat" ]]; then
+# 	battery
+# elif [[ "$1" == "--bat-st" ]]; then
+# 	battery_stat
+# fi
+

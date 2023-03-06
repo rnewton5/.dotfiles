@@ -1,0 +1,7 @@
+#!/bin/bash
+
+volume=$(pamixer --get-volume)
+muted=$(pamixer --get-mute)
+
+echo "{\"volume\":\"$volume\",\"muted\":\"$muted\"}"
+

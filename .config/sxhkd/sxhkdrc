@@ -16,15 +16,15 @@ super + Escape
 
 # raise volume by 5
 XF86AudioRaiseVolume
-  pamixer -u; pamixer -i 5
+  pamixer -u; pamixer -i 5; eww update audio=$($HOME/.config/eww/scripts/audio)
 
 # lower volume by 5
 XF86AudioLowerVolume
-  pamixer -u; pamixer -d 5
+  pamixer -u; pamixer -d 5; eww update audio=$($HOME/.config/eww/scripts/audio)
 
 # toggle mute
 XF86AudioMute
-  pamixer -t
+  pamixer -t; eww update audio=$($HOME/.config/eww/scripts/audio)
 
 #
 # bspwm hotkeys
@@ -35,7 +35,7 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout

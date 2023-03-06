@@ -1,0 +1,38 @@
+@import "gruvbox";
+
+* {
+  all: unset;
+  font-family: JetBrainsMono Nerd Font;
+}
+
+/* BAR */
+.bar_class {
+  background-color: $gb-dm-bg0;
+  color: $gb-dm-fg0;
+  border-bottom: 2px solid  $gb-dm-dark-gray;
+  padding: 4px 8px;
+}
+
+/* BATTERY */
+.battery {
+  color: $gb-dm-dark-red;
+}
+.battery.low {
+  color: $gb-dm-dark-red;
+}
+.battery.Discharging {
+  color: $gb-dm-dark-yellow;
+}
+.battery.Charging {
+  color: $gb-dm-dark-aqua;
+}
+.battery.low:hover {
+  color: $gb-dm-light-red;
+}
+.battery.Discharging:hover {
+  color: $gb-dm-light-yellow;
+}
+.battery.Charging:hover {
+  color: $gb-dm-light-aqua;
+}
+
