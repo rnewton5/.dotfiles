@@ -16,6 +16,7 @@
 /* BATTERY */
 .battery {
   transition: all .2s ease-in;
+  font-size: 1.2rem;
 }
 .battery.low {
   color: $gb-dm-dark-red;

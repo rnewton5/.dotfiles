@@ -1,10 +1,14 @@
 #! /bin/sh
 
-pgrep -x picom > /dev/null || picom --config $HOME/.config/bspwm/picom/picom.conf &
-pgrep -x dunst > /dev/null || dunst --conf $HOME/.config/bspwm/dunst/dunstrc &
-pgrep -x sxhkd > /dev/null || sxhkd -c $HOME/.config/bspwm/sxhkd/sxhkdrc &
-eww -c $HOME/.config/bspwm/eww/bar daemon
-eww -c $HOME/.config/bspwm/eww/bar open bar
+alias sxhkd="sxhkd -c $HOME/.config/bspwm/sxhkdrc"
+alias EWW_SCRIPTS="$HOME/.config/eww/scripts"
+alias eww-bar="eww -c $HOME/.config/eww/bar"
+
+pgrep -x picom > /dev/null || picom &
+pgrep -x dunst > /dev/null || dunst &
+pgrep -x sxhkd > /dev/null || sxhkd &
+eww-bar daemon
+eww-bar open main
 feh --bg-scale $HOME/Pictures/wall.gif
 
 bspc monitor -d I II III IV V VI VII VIII IX X

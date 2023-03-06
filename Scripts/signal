@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Create signals directory if it does not yet exist
+TEMPDIR="$HOME/.local/tmp/signals"
+mkdir -p $TEMPDIR
+
+SIGNAL_NAME="$2"
+PID_FILE="$TEMPDIR/$SIGNAL_NAME-$$"
+trap "rm $PID_FILE" EXIT
+cat $$ > $PID_FILE
+
+while true
+do
+  if read line ; then
+    echo "Hello"
+    # OUTPUT=$("$SCRIPT_PATH")
+    # echo $OUTPUT
+  fi
+done
+exit
+
+PID_FILE="$TEMPDIR/$2_pid"
+PID=$(cat $PID_FILE 2> /dev/null)
+
+LISTENER_COUNT_FILE="$TEMPDIR/$2_listener_count"
+SCRIPT_PATH="$3"
+
+if [[ "$1" == "-s" || "$1" == "--subscribe" ]]; then
+  if [[ "$2" == "" ]] ; then
+    exit
+  fi
+
+  if [[ "$PID" == "" ]] ; then
+    echo $$ > $PID_FILE
+    trap "rm $PID_FILE" EXIT
+    echo "Starting Server"
+    while true
+    do
+      if read line ; then
+        echo "Hello"
+        # OUTPUT=$("$SCRIPT_PATH")
+        # echo $OUTPUT
+      fi
+    done
+  else
+    PROC_STD_OUT="/proc/$$/fd/1"
+    echo Starting listenter
+    while true
+    do
+      if read line < $PROC_STD_OUT; then
+        echo "goodbye"
+        # OUTPUT=$("$SCRIPT_PATH")
+        # echo $OUTPUT
+      fi
+    done
+  fi
+
+  # while true
+  # do
+  #   if read line < $PIPE; then
+  #     `$SCRIPT_PATH`
+  #   fi
+  # done
+elif [[ "$1" == "-e" || "$1" == "--emit" ]]; then
+  LISTENER_PID_FILES=$(find .local/tmp/signals/ -type f -print | grep "$SIGNAL_NAME-[0-9][0-9]*")
+  if [[ -p $PROC_STD_IN ]]; then
+    echo "Signal Emitted!" > $PROC_STD_IN
+  fi
+fi
+

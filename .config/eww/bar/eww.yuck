@@ -1,7 +1,7 @@
-(defpoll battery :interval "2s" "scripts/battery")
-(defpoll datetime :interval "2s" "scripts/datetime")
-(defpoll audio :interval "1h" "scripts/audio")
-(defpoll brightness :interval "1h" "scripts/brightness")
+(defpoll battery :interval "2s" "../scripts/battery")
+(defpoll datetime :interval "2s" "../scripts/datetime")
+(defpoll audio :interval "1h" "../scripts/audio")
+(defpoll brightness :interval "1h" "../scripts/brightness")
 
 (defwidget datetime []
     (box
@@ -104,7 +104,7 @@
 )
 
 
-(defwindow bar
+(defwindow main 
   :monitor 0
   :geometry (geometry :x "0"
               :y "0px"
