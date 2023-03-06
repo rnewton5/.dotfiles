@@ -102,6 +102,9 @@ alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
 alias yta-wav="yt-dlp --extract-audio --audio-format wav "
 alias ytv-best="yt-dlp -f bestvideo+bestaudio "
 
+# script-on-signal
+alias sos="script-on-signal"
+
 ### OTHER SOURCES ###
 . "$HOME/.cargo/env"
 
