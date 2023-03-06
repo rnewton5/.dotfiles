@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	rofi -show drun
+  ~/.config/polybar/blocks/scripts/launcher.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -16,23 +16,23 @@ super + Escape
 
 # raise volume by 5
 XF86AudioRaiseVolume
-  pamixer -u; pamixer -i 5; simple-bus -e audio-change
+  pamixer -u; pamixer -i 5; #simple-bus -e audio-change
 
 # lower volume by 5
 XF86AudioLowerVolume
-  pamixer -u; pamixer -d 5; simple-bus -e audio-change
+  pamixer -u; pamixer -d 5; #simple-bus -e audio-change
 
 # toggle mute
 XF86AudioMute
-  pamixer -t; simple-bus -e audio-change
+  pamixer -t; #simple-bus -e audio-change
 
 # raise screen brightness
 XF86MonBrightnessUp
-  brillo -q -A 5; simple-bus -e brightness-change 
+  brillo -q -A 5; #simple-bus -e brightness-change 
 
 # lower screen brightness
 XF86MonBrightnessDown
-  brillo -q -U 5; simple-bus -e brightness-change
+  brillo -q -U 5; #simple-bus -e brightness-change
 
 #
 # bspwm hotkeys
