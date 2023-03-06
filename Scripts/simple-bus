@@ -9,6 +9,8 @@ event_name="$2"
 
 if [[ $option == "-c" || $option == "--clear" ]]; then
   rm -rf "$TEMPDIR"
+elif [[ $option == "-l" || $option == "--list" ]]; then
+  ls "$TEMPDIR"
 fi
 
 if [[ $event_name == "" ]]; then

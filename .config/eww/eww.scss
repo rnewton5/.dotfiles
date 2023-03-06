@@ -1,4 +1,4 @@
-@import "gruvbox";
+@import "./colorschemes/onedark";
 
 * {
   all: unset;
@@ -6,40 +6,54 @@
 }
 
 /* BAR */
-.bar_class {
-  background-color: $gb-dm-bg0;
-  color: $gb-dm-fg0;
-  border-bottom: 2px solid  $gb-dm-dark-gray;
+.bar-class {
+  background-color: $bg;
+  color: $fg;
   padding: 4px 8px;
 }
 
 /* BATTERY */
 .battery {
   transition: all .2s ease-in;
-  font-size: 1.2rem;
 }
-.battery.low {
-  color: $gb-dm-dark-red;
+// .battery.low {
+//   color: $gb-dm-dark-red;
+// }
+// .battery.discharging {
+//   color: $gb-dm-dark-yellow;
+// }
+// .battery.charging {
+//   color: $gb-dm-dark-aqua;
+// }
+// .battery.full {
+//   color: $gb-dm-dark-green;
+// }
+// .battery.low:hover {
+//   color: $gb-dm-light-red;
+// }
+// .battery.discharging:hover {
+//   color: $gb-dm-light-yellow;
+// }
+// .battery.charging:hover {
+//   color: $gb-dm-light-aqua;
+// }
+// .battery.full:hover {
+//   color: $gb-dm-light-green;
+// }
+
+.brightness {
+  color: $fg;
+  background-color: $orange_2;
+  color: $black;
+  border-radius: 4px;
 }
-.battery.Discharging {
-  color: $gb-dm-dark-yellow;
+.brightness>.icon {
+  padding-left: 8px;
+  padding-right: 5px;
 }
-.battery.Charging {
-  color: $gb-dm-dark-aqua;
-}
-.battery.Full {
-  color: $gb-dm-dark-green;
-}
-.battery.low:hover {
-  color: $gb-dm-light-red;
-}
-.battery.Discharging:hover {
-  color: $gb-dm-light-yellow;
-}
-.battery.Charging:hover {
-  color: $gb-dm-light-aqua;
-}
-.battery.Full:hover {
-  color: $gb-dm-light-green;
+.brightness>.info {
+  border-radius: 0 8px 8px 0;
+  padding-left: 5px;
+  padding-right: 8px;
 }
 

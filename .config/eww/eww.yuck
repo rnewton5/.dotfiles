@@ -1,15 +1,15 @@
-(defpoll battery :interval "2s" "./scripts/battery")
-(defpoll datetime :interval "2s" "./scripts/datetime")
+(defpoll battery :interval "2s" `./scripts/battery`)
+(defpoll datetime :interval "2s" `./scripts/datetime`)
 (deflisten audio `./scripts/audio`)
 (deflisten brightness `./scripts/brightness`)
 
 (defwidget datetime []
-    (box
-        "${datetime.year}-${datetime.month}-${datetime.day} ${datetime.hour}:${datetime.minute}"
-    )
+  (box
+    "${datetime.year}-${datetime.month}-${datetime.day} ${datetime.hour}:${datetime.minute}"
+  )
 )
 
-(defwidget cpu_usage []
+(defwidget cpu-usage []
   (box
     :valign "center"
     :orientation "center"
@@ -26,38 +26,41 @@
 )
 
 (defwidget brightness []
-    (box
-      :class "brightness"
-      " ${round(brightness.perc, 0)}%"
-    )
+  (box
+    :class "brightness"
+      :space-evenly false
+    (box 
+        :class "icon" 
+        "")
+    (box :class "info" "${round(brightness.perc, 0)}%")
+  )
 )
 
 (defwidget audio []
     (box
       :class "audio"
-      "墳 ${audio.muted ? "muted" : "${audio.volume}%"}"
+      (box "墳")
+      " ${audio.muted ? "muted" : "${audio.volume}%"}"
     )
 )
 
 (defwidget memory []
   (box
     :class "memory"
-    " ${round(EWW_RAM.used_mem_perc, 0)}%"
+    (box "")
+    "${round(EWW_RAM.used_mem_perc, 0)}%"
   )
 )
 
 (defwidget battery []
   (eventbox
     :onclick "notify-send 'Hello' 'Hello, there'"
-    :class "battery ${EWW_BATTERY.BAT1.status}"
     :cursor "pointer"
-    ; "${batpercent == 60 ? "hello" : "bye"}%"
-    " ${EWW_BATTERY.BAT1.capacity}%"
-    ; (box 
-    ;   :orientation "h"
-    ;   :halign "start"
-    ;   :space-evenly false
-    ; )
+    (box
+      :class "battery ${battery.class}"
+      (box "")
+      "${battery.text}"
+    )
   )
 )
 
@@ -75,7 +78,7 @@
     :orientation "h"
     :halign "center"
     :space-evenly false
-    (cpu_usage)
+    (cpu-usage)
   )
 )
 
@@ -94,7 +97,7 @@
 
 (defwidget bar []
   (box
-    :class "bar_class"
+    :class "bar-class"
     :orientation "h"
     :space-evenly true
     (left)
@@ -105,6 +108,7 @@
 
 
 (defwindow bar
+  :class "bar"
   :monitor 0
   :geometry (geometry :x "0"
               :y "0px"

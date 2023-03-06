@@ -1,26 +1,26 @@
 #!/bin/bash
 
-battery() {
+text() {
 	cat /sys/class/power_supply/BAT1/capacity
 }
 
-battery_stat() {
+class() {
   percent=$1
-  if (( percent <= 20 )); then
-    echo "low"
+  # TODO: if battery is charging, and below 20, don't return 'low'
+  if (( percent > 20 )); then
+    cat /sys/class/power_supply/BAT1/status | tr [:upper:] [:lower:]
   else
-    cat /sys/class/power_supply/BAT1/status
+    echo "low"
   fi
 }
 
-bat=$(battery)
-stat=$(battery_stat $bat)
+icon() {
+  echo ""
+}
 
-echo "{\"perc\":\"$bat\",\"stat\":\"$stat\"}"
+text=$(text)
+class=$(class $text)
+icon=$(icon $text $class)
 
-# if [[ "$1" == "--bat" ]]; then
-# 	battery
-# elif [[ "$1" == "--bat-st" ]]; then
-# 	battery_stat
-# fi
+echo "{\"text\":\"$text%\",\"icon\":\"$icon\",\"class\":\"$class\"}"
 
