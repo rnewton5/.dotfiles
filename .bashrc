@@ -5,8 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+### PROMPT ###
 PS1='[\u@\h \W]\$ '
+
+### ENVIRONMENT VARIABLES ###
+export PATH=~/Scripts:$PATH
 
 ### COLORED OUTPUT FROM LESS ###
 export LESS_TERMCAP_mb=$'\e[1;32m'
