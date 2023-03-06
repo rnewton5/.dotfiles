@@ -12,12 +12,14 @@ pgrep -x polybar > /dev/null || $(~/.config/polybar/launch.sh --blocks) &
 # eww open bar
 feh --bg-scale $HOME/Pictures/wallpapers/cliffs.jpg;
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d I II III IV V VI 
 
 bspc config normal_border_color  '#32302f'
 bspc config focused_border_color '#52504f'
 bspc config border_width         3
 bspc config window_gap           12
+bspc config border_width         0
+bspc config window_gap           0
 
 bspc config automatic_scheme     spiral
 bspc config split_ratio          0.52
