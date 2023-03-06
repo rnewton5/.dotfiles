@@ -1,7 +1,5 @@
 #! /bin/sh
 
-alias sxhkd="sxhkd -c $HOME/.config/bspwm/sxhkdrc"
-alias EWW_SCRIPTS="$HOME/.config/eww/scripts"
 alias eww-bar="eww -c $HOME/.config/eww/bar"
 
 pgrep -x picom > /dev/null || picom &

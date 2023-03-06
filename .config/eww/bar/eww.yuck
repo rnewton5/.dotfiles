@@ -1,7 +1,7 @@
 (defpoll battery :interval "2s" "../scripts/battery")
 (defpoll datetime :interval "2s" "../scripts/datetime")
-(defpoll audio :interval "1h" "../scripts/audio")
-(defpoll brightness :interval "1h" "../scripts/brightness")
+(deflisten audio `script-on-signal -s audio-change ../scripts/audio`)
+(deflisten brightness `script-on-signal -s brightness-change ../scripts/brightness`)
 
 (defwidget datetime []
     (box

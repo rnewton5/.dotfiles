@@ -13,13 +13,13 @@ if [[ "$1" == "-s" || "$1" == "--subscribe" ]]; then
 
   while true
   do
+    #EXECURE SCRIPT
+    $script_path &
     sleep infinity &
     pid=$!
     pid_file="$TEMPDIR/$signal_name-$pid"
     echo $pid > $pid_file
     wait $pid 2> /dev/null
-    #EXECURE SCRIPT
-    $script_path
   done
 fi
 

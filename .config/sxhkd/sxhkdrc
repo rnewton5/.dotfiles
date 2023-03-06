@@ -16,23 +16,23 @@ super + Escape
 
 # raise volume by 5
 XF86AudioRaiseVolume
-  pamixer -u; pamixer -i 5; eww-bar update audio=$($EWW_SCRIPTS/audio)
+  pamixer -u; pamixer -i 5; script-on-signal -e audio-change
 
 # lower volume by 5
 XF86AudioLowerVolume
-  pamixer -u; pamixer -d 5; eww-bar update audio=$($EWW_SCRIPTS/audio)
+  pamixer -u; pamixer -d 5; script-on-signal -e audio-change
 
 # toggle mute
 XF86AudioMute
-  pamixer -t; eww-bar update audio=$($EWW_SCRIPTS/audio)
+  pamixer -t; script-on-signal -e audio-change
 
 # raise screen brightness
 XF86MonBrightnessUp
-  brillo -q -A 5; eww-bar update brightness=$($EWW_SCRIPTS/brightness)
+  brillo -q -A 5; script-on-signal -e brightness-change 
 
 # lower screen brightness
 XF86MonBrightnessDown
-  brillo -q -U 5; eww-bar update brightness=$($EWW_SCRIPTS/brightness)
+  brillo -q -U 5; script-on-signal -e brightness-change
 
 #
 # bspwm hotkeys
