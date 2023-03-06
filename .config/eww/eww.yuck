@@ -12,7 +12,7 @@
 (defwidget brightness []
     (box
       :class "brightness"
-      "墳 ${round(brightness.perc, 0)}"
+      " ${round(brightness.perc, 0)}"
     )
 )
 
