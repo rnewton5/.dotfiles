@@ -1,7 +1,14 @@
 #!/bin/bash
 
-volume=$(pamixer --get-volume)
-muted=$(pamixer --get-mute)
+get()
+{
+  volume=$(pamixer --get-volume)
+  muted=$(pamixer --get-mute)
+  echo "{\"volume\":\"$volume\",\"muted\":\"$muted\"}"
+}
 
-echo "{\"volume\":\"$volume\",\"muted\":\"$muted\"}"
+get
+simple-bus -s audio-change | while read output; do
+  get
+done
 

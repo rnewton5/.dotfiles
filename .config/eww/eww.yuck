@@ -1,7 +1,7 @@
-(defpoll battery :interval "2s" "../scripts/battery")
-(defpoll datetime :interval "2s" "../scripts/datetime")
-(deflisten audio `script-on-signal -s audio-change ../scripts/audio`)
-(deflisten brightness `script-on-signal -s brightness-change ../scripts/brightness`)
+(defpoll battery :interval "2s" "./scripts/battery")
+(defpoll datetime :interval "2s" "./scripts/datetime")
+(deflisten audio `./scripts/audio`)
+(deflisten brightness `./scripts/brightness`)
 
 (defwidget datetime []
     (box
@@ -62,7 +62,7 @@
 )
 
 (defwidget left []
-  (box 
+  (box
     :orientation "h"
     :halign "start"
     :space-evenly false
@@ -71,7 +71,7 @@
 )
 
 (defwidget center []
-  (box 
+  (box
     :orientation "h"
     :halign "center"
     :space-evenly false
@@ -80,11 +80,11 @@
 )
 
 (defwidget right []
-  (box 
+  (box
     :orientation "h"
     :halign "end"
     :space-evenly false
-    :spacing 8; 
+    :spacing 8;
     (brightness)
     (audio)
     (memory)
@@ -93,7 +93,7 @@
 )
 
 (defwidget bar []
-  (box 
+  (box
     :class "bar_class"
     :orientation "h"
     :space-evenly true
@@ -104,7 +104,7 @@
 )
 
 
-(defwindow main 
+(defwindow bar
   :monitor 0
   :geometry (geometry :x "0"
               :y "0px"

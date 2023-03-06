@@ -1,12 +1,10 @@
 #! /bin/sh
 
-alias eww-bar="eww -c $HOME/.config/eww/bar"
-
 pgrep -x picom > /dev/null || picom &
 pgrep -x dunst > /dev/null || dunst &
 pgrep -x sxhkd > /dev/null || sxhkd &
-eww-bar daemon
-eww-bar open main
+eww daemon
+eww open bar
 feh --bg-scale $HOME/Pictures/wall.gif
 
 bspc monitor -d I II III IV V VI VII VIII IX X

@@ -1,6 +1,12 @@
 #!/bin/bash
 
-perc=$(brillo)
+get()
+{
+  echo "{\"perc\":\"$(brillo)\"}"
+}
 
-echo "{\"perc\":\"$perc\"}"
+get
+simple-bus -s brightness-change | while read output; do
+  get
+done
 

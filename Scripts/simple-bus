@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Create simple-bus directory if it does not yet exist
+TEMPDIR="$HOME/.local/tmp/simple-bus"
+mkdir -p $TEMPDIR
+
+option="$1"
+event_name="$2"
+
+if [[ $option == "-c" || $option == "--clear" ]]; then
+  rm -rf "$TEMPDIR"
+fi
+
+if [[ $event_name == "" ]]; then
+  exit
+elif [[ $option == "-s" || $option == "--subscribe" ]]; then
+  uuid="$(uuidgen)"
+  pipe="$TEMPDIR/$event_name-$uuid"
+  mkfifo $pipe
+  trap "rm $pipe" EXIT
+  while read -r line < $pipe;
+  do
+    echo $line
+  done
+elif [[ $option == "-e" || $option == "--emit" ]]; then
+  message="$3"
+  pipes=$(find $TEMPDIR -type p -print | grep "$event_name-.*")
+  for pipe in $pipes; do
+    echo $message > $pipe
+  done
+fi
+
