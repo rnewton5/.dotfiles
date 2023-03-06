@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Create signals directory if it does not yet exist
+TEMPDIR="$HOME/.local/tmp/script-on-signal"
+mkdir -p $TEMPDIR
+
+if [[ "$1" == "-s" || "$1" == "--subscribe" ]]; then
+  if [[ "$2" == "" || "$3" == "" ]] ; then
+    exit
+  fi
+  signal_name="$2"
+  script_path="$3"
+
+  while true
+  do
+    sleep infinity &
+    pid=$!
+    pid_file="$TEMPDIR/$signal_name-$pid"
+    echo $pid > $pid_file
+    wait $pid 2> /dev/null
+    #EXECURE SCRIPT
+    $script_path
+  done
+fi
+
+if [[ "$1" == "-e" || "$1" == "--emit" ]]; then
+  signal_name="$2"
+  listener_pid_files=$(find $TEMPDIR -type f -print | grep "$signal_name-[0-9][0-9]*")
+  for fn in $listener_pid_files; do
+    pid=$(cat $fn)
+    kill -KILL $pid 2> /dev/null
+    rm $fn
+  done
+fi
+
+if [[ "$1" == "-c" || "$1" == "--clear" ]]; then
+  rm -rf "$TEMPDIR"
+fi
+
