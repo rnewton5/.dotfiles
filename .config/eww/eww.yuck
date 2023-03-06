@@ -9,30 +9,14 @@
   )
 )
 
-(defwidget cpu-usage []
-  (box
-    :valign "center"
-    :orientation "center"
-    (graph
-      :value 50 ;float the value, between 0 - 100
-      :thickness 1 ;float the thickness of the line
-      :time-range "10s" ;duration the range of time to show
-      :min 0 ;float the minimum value to show (defaults to 0 if value_max is provided)
-      :max 100 ;float the maximum value to show
-      :dynamic false ;bool whether the y range should dynamically change based on value
-      :line-style "miter" ;string changes the look of the edges in the graph. Values: "miter" (default), "round",
-    )
-  )
-)
-
 (defwidget brightness []
   (box
     :class "brightness"
       :space-evenly false
     (box 
-        :class "icon" 
-        "")
-    (box :class "info" "${round(brightness.perc, 0)}%")
+      :class "icon" 
+      "")
+      (box :class "info" "${round(brightness.perc, 0)}%")
   )
 )
 
@@ -73,12 +57,31 @@
   )
 )
 
+(defwidget my-circular-progress []
+  (overlay
+    :class "my-circular-progress"
+    :orientation "h"
+    :halign "start"
+    (circular-progress
+      :class "danger"
+      :value 43 
+      :start-at 75 
+      :thickness 10 
+      :clockwise false
+    )
+  )
+)
+
+(defwidget status-item []
+  (my-circular-progress)
+)
+
 (defwidget center []
   (box
     :orientation "h"
     :halign "center"
     :space-evenly false
-    (cpu-usage)
+    (status-item)
   )
 )
 

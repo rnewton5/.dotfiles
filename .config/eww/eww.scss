@@ -21,7 +21,7 @@
 // }
 // .battery.discharging {
 //   color: $gb-dm-dark-yellow;
-// }
+// 
 // .battery.charging {
 //   color: $gb-dm-dark-aqua;
 // }
@@ -43,8 +43,6 @@
 
 .brightness {
   color: $fg;
-  background-color: $orange_2;
-  color: $black;
   border-radius: 4px;
 }
 .brightness>.icon {
@@ -55,5 +53,13 @@
   border-radius: 0 8px 8px 0;
   padding-left: 5px;
   padding-right: 8px;
+}
+
+.danger {
+  color: $red;
+}
+
+.info {
+  color: $red;
 }
 
