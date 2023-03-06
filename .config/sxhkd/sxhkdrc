@@ -26,6 +26,14 @@ XF86AudioLowerVolume
 XF86AudioMute
   pamixer -t; eww update audio=$($HOME/.config/eww/scripts/audio)
 
+# raise screen brightness
+XF86MonBrightnessUp
+  brillo -q -A 5; eww update brightness=$($HOME/.config/eww/scripts/brightness)
+
+# lower screen brightness
+XF86MonBrightnessDown
+  brillo -q -U 5; eww update brightness=$($HOME/.config/eww/scripts/brightness)
+
 #
 # bspwm hotkeys
 #

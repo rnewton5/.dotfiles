@@ -1,10 +1,18 @@
 (defpoll battery :interval "2s" "scripts/battery")
 (defpoll datetime :interval "2s" "scripts/datetime")
 (defpoll audio :interval "1h" "scripts/audio")
+(defpoll brightness :interval "1h" "scripts/brightness")
 
 (defwidget datetime []
     (box
         "${datetime.year}-${datetime.month}-${datetime.day} ${datetime.hour}:${datetime.minute}"
+    )
+)
+
+(defwidget brightness []
+    (box
+      :class "brightness"
+      "墳 ${round(brightness.perc, 0)}"
     )
 )
 
@@ -61,6 +69,7 @@
     :halign "end"
     :space-evenly false
     :spacing 8; 
+    (brightness)
     (audio)
     (memory)
     (battery)

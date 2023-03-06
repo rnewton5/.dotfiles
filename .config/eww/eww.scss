@@ -15,7 +15,7 @@
 
 /* BATTERY */
 .battery {
-  color: $gb-dm-dark-red;
+  transition: all .2s ease-in;
 }
 .battery.low {
   color: $gb-dm-dark-red;
@@ -26,6 +26,9 @@
 .battery.Charging {
   color: $gb-dm-dark-aqua;
 }
+.battery.Full {
+  color: $gb-dm-dark-green;
+}
 .battery.low:hover {
   color: $gb-dm-light-red;
 }
@@ -34,5 +37,8 @@
 }
 .battery.Charging:hover {
   color: $gb-dm-light-aqua;
+}
+.battery.Full:hover {
+  color: $gb-dm-light-green;
 }
 

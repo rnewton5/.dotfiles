@@ -1,0 +1,6 @@
+#!/bin/bash
+
+perc=$(brillo)
+
+echo "{\"perc\":\"$perc\"}"
+
