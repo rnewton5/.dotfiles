@@ -49,6 +49,9 @@ ex ()
 }
 
 ### ALIASES ###
+# clipboard access (echo hello > clipboard)
+alias clipboard="xclip -selection clipboard"
+
 # Always use Neovim
 alias vim="nvim"
   
